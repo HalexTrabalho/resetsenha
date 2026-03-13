@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial: Reset de Senha Windows 11</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .step-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .command-box {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-family: 'Courier New', Courier, monospace;
+            position: relative;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: #333;
+            color: #fff;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+        }
+
+        .copy-btn:hover {
+            background: #555;
+        }
+
+        .progress-bar {
+            height: 4px;
+            background: #e2e8f0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #3b82f6;
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <div class="progress-bar w-full">
+        <div id="progressFill" class="progress-fill"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 bg-blue-600 rounded flex items-center justify-center">
+                    <span class="text-white font-bold">W</span>
+                </div>
+                <h1 class="text-xl font-bold tracking-tight">WindowsAdmin</h1>
+            </div>
+            <nav class="hidden md:flex space-x-6 text-sm font-medium text-gray-600">
+                <a href="#intro" class="hover:text-blue-600">Introdução</a>
+                <a href="#tutorial" class="hover:text-blue-600">Passo a Passo</a>
+                <a href="#seguranca" class="hover:text-blue-600">Segurança</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-12">
+        <!-- Hero Section -->
+        <section id="intro" class="mb-16 text-center">
+            <span class="inline-block px-3 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full mb-4 uppercase tracking-wider">Tutorial Técnico</span>
+            <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
+                Reset de Senha Esquecida no <span class="text-blue-600">Windows 11</span>
+            </h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                Aprenda a recuperar o acesso ao seu sistema sem softwares externos, sem pen drives e de forma totalmente nativa. Ideal para situações de emergência.
+            </p>
+        </section>
+
+        <!-- Warning Box -->
+        <div class="bg-amber-50 border-l-4 border-amber-400 p-6 mb-12 rounded-r-lg">
+            <div class="flex">
+                <div class="flex-shrink-0">
+                    <svg class="h-6 w-6 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                    </svg>
+                </div>
+                <div class="ml-4">
+                    <h3 class="text-sm font-bold text-amber-800 uppercase">Atenção Crítica</h3>
+                    <p class="text-sm text-amber-700 mt-1">
+                        Este procedimento envolve a manipulação de arquivos do sistema (`System32`). Siga rigorosamente os passos para evitar danos à instalação do Windows. Recomenda-se realizar este processo apenas em computadores de sua propriedade.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tutorial Steps -->
+        <section id="tutorial">
+            <h3 class="text-2xl font-bold mb-8 flex items-center">
+                <span class="flex items-center justify-center w-8 h-8 bg-blue-600 text-white rounded-full mr-3 text-sm">1</span>
+                Iniciando o Modo de Depuração
+            </h3>
+            
+            <div class="step-card bg-white p-8 rounded-xl border border-gray-200 mb-12">
+                <p class="text-gray-700 mb-6">
+                    Para acessar as ferramentas de reparo sem uma senha, precisamos entrar nas Opções Avançadas de Inicialização:
+                </p>
+                <ul class="space-y-4 text-gray-600">
+                    <li class="flex items-start">
+                        <span class="mr-3 text-blue-500 mt-1">•</span>
+                        Na tela de login, segure a tecla  <strong>SHIFT</strong>.
+                    </li>
+                    <li class="flex items-start">
+                        <span class="mr-3 text-blue-500 mt-1">•</span>
+                        Com o SHIFT pressionado, clique em  <strong>Reiniciar</strong>.
+                    </li>
+                    <li class="flex items-start">
+                        <span class="mr-3 text-blue-500 mt-1">•</span>
+                        O Windows entrará no ambiente de recuperação. Navegue em: <br>
+                        <span class="font-semibold text-gray-800">Solução de Problemas > Opções Avançadas > Prompt de Comando</span>.
+                    </li>
+                </ul>
+            </div>
+
+            <h3 class="text-2xl font-bold mb-8 flex items-center">
+                <span class="flex items-center justify-center w-8 h-8 bg-blue-600 text-white rounded-full mr-3 text-sm">2</span>
+                Manipulação de Arquivos via Notepad
+            </h3>
+            
+            <div class="step-card bg-white p-8 rounded-xl border border-gray-200 mb-12">
+                <p class="text-gray-700 mb-6">
+                    Como o Prompt de Comando abre em um ambiente limitado (X:), usaremos o Bloco de Notas como um "Explorador de Arquivos" improvisado para renomear arquivos do sistema:
+                </p>
+                
+                <div class="command-box mb-6">
+                    <span class="copy-btn" onclick="copyText('notepad')">Copiar</span>
+                    <span id="notepad">notepad.exe</span>
+                </div>
+
+                <ol class="space-y-4 text-gray-600 list-decimal pl-5">
+                    <li>No Bloco de Notas, vá em <strong>Arquivo > Abrir</strong>.</li>
+                    <li>Mude o tipo de arquivo para <strong>"Todos os Arquivos (*.*)"</strong>.</li>
+                    <li>Navegue até <code>C:\Windows\System32</code> (Nota: a letra da unidade pode variar no modo de recuperação, geralmente é C: ou D:).</li>
+                    <li>Localize o arquivo <strong>sethc.exe</strong> (Teclas de Aderência) e renomeie-o para <strong>sethc.exe.bak</strong>.</li>
+                    <li>Localize o arquivo <strong>cmd.exe</strong>, copie-o e cole na mesma pasta.</li>
+                    <li>Renomeie a cópia do <code>cmd.exe</code> para <strong>sethc.exe</strong>.</li>
+                </ol>
+                <p class="mt-4 text-sm text-blue-600 italic">Isso fará com que o Windows abra o Prompt de Comando em vez das Teclas de Aderência na tela de login.</p>
+            </div>
+
+            <h3 class="text-2xl font-bold mb-8 flex items-center">
+                <span class="flex items-center justify-center w-8 h-8 bg-blue-600 text-white rounded-full mr-3 text-sm">3</span>
+                Resetando a Senha
+            </h3>
+            
+            <div class="step-card bg-white p-8 rounded-xl border border-gray-200 mb-12">
+                <p class="text-gray-700 mb-6">
+                    Feche tudo e clique em <strong>Continuar para o Windows 11</strong>. Agora, na tela de login:
+                </p>
+                
+                <ul class="space-y-4 text-gray-600">
+                    <li class="flex items-start">
+                        <span class="mr-3 text-blue-500 mt-1">•</span>
+                        Pressione a tecla <strong>SHIFT</strong> cinco vezes rapidamente.
+                    </li>
+                    <li class="flex items-start">
+                        <span class="mr-3 text-blue-500 mt-1">•</span>
+                        Uma janela preta (Prompt de Comando) abrirá com privilégios de Administrador.
+                    </li>
+                </ul>
+
+                <p class="mt-6 mb-2 text-sm font-semibold text-gray-700 uppercase">Comando para identificar usuário:</p>
+                <div class="command-box mb-6">
+                    <span class="copy-btn" onclick="copyText('netuser')">Copiar</span>
+                    <span id="netuser">net localgroup administrators</span>
+                </div>
+
+                <p class="mb-2 text-sm font-semibold text-gray-700 uppercase">Comando para mudar a senha:</p>
+                <div class="command-box">
+                    <span class="copy-btn" onclick="copyText('resetpass')">Copiar</span>
+                    <span id="resetpass">net user [NOME_USUARIO] *</span>
+                </div>
+                <p class="text-xs text-gray-500 mt-2">Substitua [NOME_USUARIO] pelo seu nome de conta. Digite a nova senha quando solicitado (ela não aparecerá enquanto você digita).</p>
+            </div>
+        </section>
+
+        <!-- Final Steps -->
+        <section class="bg-gray-900 text-white p-8 rounded-2xl mb-16">
+            <h3 class="text-xl font-bold mb-4">Conclusão e Reversão</h3>
+            <p class="text-gray-400 mb-6">
+                Após entrar no sistema com a nova senha, lembre-se de voltar à pasta <code>System32</code> e renomear os arquivos de volta ao estado original para manter a segurança e as funcionalidades do sistema intactas.
+            </p>
+            <div class="flex flex-col md:flex-row gap-4">
+                <div class="bg-gray-800 p-4 rounded-lg flex-1">
+                    <span class="block text-blue-400 font-bold mb-1">Passo Final 1</span>
+                    Apague o `sethc.exe` falso (o cmd).
+                </div>
+                <div class="bg-gray-800 p-4 rounded-lg flex-1">
+                    <span class="block text-blue-400 font-bold mb-1">Passo Final 2</span>
+                    Renomeie `sethc.exe.bak` para `sethc.exe`.
+                </div>
+            </div>
+        </section>
+
+        <!-- Security Section -->
+        <section id="seguranca" class="border-t border-gray-200 pt-16">
+            <h3 class="text-2xl font-bold mb-8">Dicas de Segurança Pós-Recuperação</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="flex items-start p-4">
+                    <div class="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-2">Use Contas Microsoft</h4>
+                        <p class="text-sm text-gray-600">Vincular seu login a uma conta Microsoft permite o reset de senha via e-mail ou celular de forma oficial.</p>
+                    </div>
+                </div>
+                <div class="flex items-start p-4">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-2">Disco de Redefinição</h4>
+                        <p class="text-sm text-gray-600">Crie um pendrive de recuperação de senha oficial do Windows enquanto você ainda tem acesso à conta.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white border-t border-gray-200 py-12 mt-12">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <p class="text-sm text-gray-500">&copy; Halex System&reg</p>
+            <div id="toast" class="fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-6 py-3 rounded-full text-sm font-medium shadow-2xl opacity-0 transition-opacity pointer-events-none">
+                Copiado para a área de transferência!
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Função para copiar texto
+        function copyText(id) {
+            const text = document.getElementById(id).innerText;
+            const tempInput = document.createElement("input");
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            const toast = document.getElementById('toast');
+            toast.style.opacity = '1';
+            setTimeout(() => {
+                toast.style.opacity = '0';
+            }, 2000);
+        }
+
+        // Barra de progresso de leitura
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressFill').style.width = scrolled + "%";
+        });
+    </script>
+</body>
+</html>
